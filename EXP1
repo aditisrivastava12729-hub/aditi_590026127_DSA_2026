@@ -1,0 +1,302 @@
+(1) Write a C program to read n elements into an array and display the elements using a for
+loop. 
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    int arr[100];
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Array elements are:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+
+(2) Suppose there are 20 students in a class. Enter marks of the students (max marks:100) in
+2 subjects using 2 different arrays. Print the total marks obtained by each student. 
+
+#include <stdio.h>
+
+int main() {
+    int sub1[20], sub2[20], i;
+
+    for (i = 0; i < 20; i++) {
+        printf("Enter marks of student %d (Sub1 Sub2): ", i + 1);
+        scanf("%d %d", &sub1[i], &sub2[i]);
+    }
+
+    printf("\nTotal marks:\n");
+    for (i = 0; i < 20; i++) {
+        printf("Student %d: %d\n", i + 1, sub1[i] + sub2[i]);
+    }
+
+    return 0;
+}
+
+
+(3) Ask the user to enter the total number of students in the class. Enter marks of the students
+(max marks:100) in 5 subjects using a 2-dimensional array. Print total marks percentage
+obtained by each student. 
+
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    int marks[50][5];
+    int total;
+    float percent;
+
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("Enter marks of student %d:\n", i + 1);
+        for (j = 0; j < 5; j++) {
+            scanf("%d", &marks[i][j]);
+        }
+    }
+
+    for (i = 0; i < n; i++) {
+        total = 0;
+        for (j = 0; j < 5; j++) {
+            total += marks[i][j];
+        }
+        percent = total / 5.0;
+        printf("Student %d: Total = %d, Percentage = %.2f%%\n",
+               i + 1, total, percent);
+    }
+
+    return 0;
+}
+
+
+(4) Write a C program to find the largest and smallest elements of an array. 
+
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    int arr[100];
+    int max, min;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    max = min = arr[0];
+
+    for (i = 1; i < n; i++) {
+        if (arr[i] > max)
+            max = arr[i];
+        if (arr[i] < min)
+            min = arr[i];
+    }
+
+    printf("Largest = %d\nSmallest = %d", max, min);
+
+    return 0;
+}
+
+
+(5) Write a C program to display the elements of an array in reverse order. 
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    int arr[100];
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Array in reverse order:\n");
+    for (i = n - 1; i >= 0; i--) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+
+(6) Write a C program to search for a given element in an array using linear search and display
+whether the element is found or not. 
+#include <stdio.h>
+
+int main() {
+    int n, i, key, found = 0;
+    int arr[100];
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter element to search: ");
+    scanf("%d", &key);
+
+    for (i = 0; i < n; i++) {
+        if (arr[i] == key) {
+            found = 1;
+            break;
+        }
+    }
+
+    if (found)
+        printf("Element found");
+    else
+        printf("Element not found");
+
+    return 0;
+}
+
+
+(7) Write a C program to insert a new element at a specified position in an array and display
+the updated array. 
+
+#include <stdio.h>
+
+int main() {
+    int n, i, pos, x;
+    int arr[100];
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter position and element: ");
+    scanf("%d %d", &pos, &x);
+
+    for (i = n; i >= pos; i--) {
+        arr[i] = arr[i - 1];
+    }
+
+    arr[pos - 1] = x;
+    n++;
+
+    printf("Updated array:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+
+(8) Write a C program to delete an element from a specified position and display the resulting
+array.
+#include <stdio.h>
+
+int main() {
+    int n, i, pos;
+    int arr[100];
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter position to delete: ");
+    scanf("%d", &pos);
+
+    for (i = pos - 1; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+
+    n--;
+
+    printf("Array after deletion:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+
+(9) Write a C program to sort the elements of an array in ascending order. 
+
+#include <stdio.h>
+
+int main() {
+    int n, i, j, temp;
+    int arr[100];
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i < n - 1; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (arr[i] > arr[j]) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    printf("Sorted array:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+(10)Write a C program to merge two arrays into a single array and display the merged array.
+#include <stdio.h>
+
+int main() {
+    int n1, n2, i;
+    int a[50], b[50], c[100];
+
+    printf("Enter size of first array: ");
+    scanf("%d", &n1);
+
+    for (i = 0; i < n1; i++) {
+        scanf("%d", &a[i]);
+        c[i] = a[i];
+    }
+
+    printf("Enter size of second array: ");
+    scanf("%d", &n2);
+
+    for (i = 0; i < n2; i++) {
+        scanf("%d", &b[i]);
+        c[n1 + i] = b[i];
+    }
+
+    printf("Merged array:\n");
+    for (i = 0; i < n1 + n2; i++) {
+        printf("%d ", c[i]);
+    }
+
+    return 0;
+}
+
